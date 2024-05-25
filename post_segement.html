@@ -380,7 +380,7 @@ setInterval(swap_authority_logo_dispaly, DELAY_OF_AUTHORITY_LOGO_SWAPPING);
 
 <script>
 //auto refreshing
-const AUTO_REFRESH_DELAY = 1000 * 60 * 5;
+const AUTO_REFRESH_DELAY = 1000 * 3600 * 6 ; //each 6 hours
 
 function refresh_the_page()
 	{
@@ -403,11 +403,11 @@ function update_background_color_of_screen_segments_according_to_time_of_day()
 		let lumination = 0;
 		if (current_hour <= 12)
 			{
-			lumination = 50 * (1-((current_hour-12)/12));
+			lumination = 50 * (current_hour/12);
 			}
 		if (current_hour > 12)
 			{
-			lumination = 50 * (current_hour/12);
+			lumination = 50 * (1-((current_hour-12)/12));
 			}
 		segment.style.backgroundColor = `hsl(214.8,100%,${lumination}%)`;
 		}
