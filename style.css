@@ -1,0 +1,294 @@
+@font-face 
+	{
+	font-family : "font_0";
+	src : url("/get_font_0");
+	}
+	
+
+@font-face 
+	{
+	font-family: "digital_font";
+	src : url("/static/digitial_font.ttf");
+	}
+
+
+*
+	{
+	font-family: font_0;
+	color: white;
+	asd
+	}
+
+
+
+
+
+
+
+.singular_seg 
+	{
+	display: flex;
+	flex-direction: column;
+	position:absolute;
+	background-color: #006bff;
+	align-content: center;
+	align-items: center;
+	text-align: center;
+	}
+
+
+body 
+	{
+	margin : 0px;
+	overflow: hidden;
+	}
+
+
+
+.main_logo 
+	{
+	height: 70%;
+	width: 70%;
+	
+	}
+
+.wind_logo
+	{
+	width: 30%;
+	object-fit: cover;
+	}
+
+.cloud_logo
+	{
+	width: 80%;
+	object-fit: cover;
+	}
+
+
+.filling_video
+	{
+	height : 100%;
+	width : 100%;
+	object-fit: fill;
+	}
+	
+	
+#unix_title
+	{
+	font-family: digital_font;
+	margin: 0px;
+	}
+
+
+#hour_minute_flex
+	{
+	display:flex;
+	flex-direction:row;
+	}
+
+
+#hour_dispaly 
+	{
+	font-family: digital_font !important ;		
+	font-size: xx-large;
+	margin: 0px;
+	}	
+	
+#hour_minute_delimiter
+	{
+	font-family: digital_font !important ;		
+	font-size: xx-large;
+	margin: 0px;
+	}
+	
+#minute_display 
+	{
+	font-family: digital_font !important ;		
+	font-size: xx-large;
+	margin: 0px;
+	}
+	
+
+
+
+#unix_clock
+	{
+	font-family: digital_font !important ;
+	font-size: large;
+	margin-bottom: 0.1vh;
+	margin-top: 0.1vh;	
+	}
+
+
+#full_date
+	{
+	font-family: digital_font !important ;		
+	font-size: x-large;
+	margin-bottom: 0.1vh;
+	margin-top: 0.1vh;	
+	}
+	
+#wind_h1
+	{
+	font-size: large;
+	}
+
+
+
+
+
+.weather_label
+	{
+	font-size: medium;
+	padding: 0.1vh;
+	margin: 0.1vh;
+	}
+
+.weather_value 
+	{
+	font-size: large;
+	padding: 0.1vh;
+	margin: 0.1vh;	
+	}
+
+
+#temp_logo
+	{
+	width: 25%;
+	}
+
+
+#humidity_logo
+	{
+	width: 30%;
+	}
+
+
+
+.air_pollution_bars_flex
+	{
+	display: flex;
+	flex-direction: row-reverse;
+	}
+
+
+.air_pollution_single_bar_flex
+	{
+	width: 3vh;
+	display: flex;
+	flex-direction: column-reverse;
+	padding-right: 0.6vh;
+	padding-left: 0.6vh;
+	}
+
+
+.air_pollution_bar
+	{
+	color: transparent;
+	background-color: black;
+	}
+
+
+.air_pollution_value
+	{
+	font-size: xx-small;
+	}
+
+
+.air_pollution_lable
+	{
+	font-size: xx-small;
+	}
+
+
+
+#net_speed_title 
+	{
+	font-size: small;	
+	}
+
+
+#net_speed_title
+	{
+	margin-bottom:0px;
+	margin-top:0.2vh;
+	}
+
+
+#net_speed_value
+	{
+	font-size: small;
+	}
+	
+	
+@keyframes mositto_logo_animation
+	{
+	0%
+		{
+		transform : translateY(0px);
+		}
+	50%
+		{
+		transform : translateY(100px);			
+		}
+	100%
+		{
+		transform : translateY(10px);				
+		}		
+	}
+	
+#mositto_logo
+	{
+	animation-name: mositto_logo_animation;
+	aniamtion-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-fill-mode: forward;
+	height: 70%;
+	width: 70%;
+	}
+	
+
+@keyframes weather_status_icon_animation
+	{
+	0%
+		{
+		transform: translateX(0%);
+		}
+	25%
+		{
+		transform: translateX(20%);
+		}
+	75%
+		{
+		transform: translateX(-20%);
+		}	
+	90%
+		{
+		transform: translateX(20%);
+		}	
+	100%
+		{
+		transform: translateX(0%);
+		}			
+	}
+	
+	
+#weather_status_icon
+	{
+	animation-name: weather_status_icon_animation;
+	animation-duration: 20s;
+	animation-iteration-count:infinite;
+	}
+	
+#weather_title_holder
+	{
+		font-size:x-large;
+		margin:1%;
+	}
+	
+#weather_caption_holder
+	{
+		font-size:x-large;	
+		margin:1%;		
+	}
+	

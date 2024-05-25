@@ -1,0 +1,76 @@
+https://api.openweathermap.org/data/2.5/weather?lat=35.7415&lon=51.5300&appid=1340efe030f838cd04d062ed85d74913
+{
+  "coord": {
+    "lon": 51.53,
+    "lat": 35.7415
+  },
+  "weather": [
+    {
+      "id": 802,
+      "main": "Clouds",
+      "description": "scattered clouds",
+      "icon": "03d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 291.88,
+    "feels_like": 290.59,
+    "temp_min": 291.81,
+    "temp_max": 293.76,
+    "pressure": 1013,
+    "humidity": 30,
+    "sea_level": 1013,
+    "grnd_level": 850
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 3.14,
+    "deg": 178,
+    "gust": 2.86
+  },
+  "clouds": {
+    "all": 25
+  },
+  "dt": 1716108112,
+  "sys": {
+    "type": 2,
+    "id": 47737,
+    "country": "IR",
+    "sunrise": 1716081949,
+    "sunset": 1716132911
+  },
+  "timezone": 12600,
+  "id": 112931,
+  "name": "Tehran",
+  "cod": 200
+}
+
+
+
+
+http://api.openweathermap.org/data/2.5/air_pollution?lat=5.7415&lon=51.5300&appid=1340efe030f838cd04d062ed85d74913
+	{
+	  "coord": {
+	    "lon": 51.53,
+	    "lat": 5.7415
+	  },
+	  "list": [
+	    {
+	      "main": {
+	        "aqi": 1
+	      },
+	      "components": {
+	        "co": 233.65,
+	        "no": 0,
+	        "no2": 0.02,
+	        "o3": 35.41,
+	        "so2": 0.13,
+	        "pm2_5": 2.82,
+	        "pm10": 7.13,
+	        "nh3": 0
+	      },
+	      "dt": 1716111719
+	    }
+	  ]
+	}

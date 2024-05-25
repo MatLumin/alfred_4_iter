@@ -1,0 +1,421 @@
+
+
+
+
+<script>
+//general scripts here 
+
+function random_choice_from_iterable(iterable)
+	{
+	let len = iterable.length;
+	let random_index = Math.random() * len;
+	random_index = Math.floor(random_index);
+	return iterable[random_index];
+	}
+
+</script>
+
+
+
+<script>
+	function update_unix()
+		{
+		document.getElementById("unix_clock").innerText = Math.floor(Date.now()).toString().slice(0,10);
+		document.getElementById("full_date").innerText = Intl.DateTimeFormat("en").format(new Date());
+		let current_clock = new Date();
+		document.getElementById("hour_dispaly").innerText = `${current_clock.getHours()}`;
+		document.getElementById("hour_minute_delimiter").innerText = [":", " "][+(Date.now()%2==0)];
+		document.getElementById("minute_display").innerText = `${current_clock.getMinutes()}`;
+		}                        
+
+	setInterval(update_unix, 1000);
+</script>
+
+
+
+
+<script>
+
+
+function pbv()
+	{
+	document.getElementById("first_video_displayer").play();
+	document.getElementById("second_video_displayer").play();
+	}
+
+function rand_int()
+	{
+	return Math.floor(Math.random() * 254);
+	}
+
+
+function randomize_segments_colors()
+	{
+	for (segmnent of list_of_screen_segments)
+		{
+		segmnent.style.backgroundColor = `rgb(${rand_int()}, ${rand_int()}, ${rand_int()})`
+		}
+	}
+
+
+</script>
+
+
+
+
+<script>
+//scripts for sequential playing from server
+class video_playlist_manager
+	{
+	constructor(id_of_player_element, id_of_playlist)
+		{
+		let log = console.log;
+		this.id_of_player_element= id_of_player_element;
+		this.last_video_index = 0;
+		this.id_of_playlist = id_of_playlist;
+		log(`making a video_playlist_manager for iope:${this.id_of_player_element}, l:${this.last_video_index}, iop:${this.id_of_playlist}`)
+		this.plant_video_changer_on_target();
+		}
+
+	generate_current_src_url()
+		{
+		return `get_play_list_nth_video/${this.id_of_playlist}/${this.index}`;
+		}
+
+	plant_video_changer_on_target()
+		{
+		let target_element = document.getElementById(this.id_of_player_element).onended = function()
+			{
+			let target_element = document.getElementById(this.id_of_player_element);
+			target_element.src = this.id_of_playlist();
+			this.last_video_index += 1;
+			};
+		}
+	}
+//let first_video_playlist_manager = new video_playlist_manager("first_video_displayer", "first_video_displayer");
+//let second_video_playlist_manager = new video_playlist_manager("second_video_displayer", "second_video_displayer");
+</script>
+
+
+
+
+
+<script>
+//upadting air pollution things
+
+
+
+</script>
+
+
+
+<script>
+const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather?lat=35.7415&lon=51.5300&appid=1340efe030f838cd04d062ed85d74913";
+const WEATHER_API_UPDATING_DELAY_IN_MS = 1000 * 3600 * 2; //2 HOUR
+
+async function return_needed_data_from_weather_api()
+	{
+	let response = await fetch(WEATHER_API_URL);
+	let json_data = await response.json();
+
+	let output = 
+		{
+		"wind_speed":json_data["wind"]["speed"],
+		"wind_deg":json_data["wind"]["deg"],
+		"wind_gust":json_data["wind"]["gust"],
+		"temp":json_data["main"]["temp"],
+		"temp_min":json_data["main"]["feels_like"],
+		"temp_max":json_data["main"]["temp_max"],
+		"feels_like":json_data["main"]["temp_min"],
+		"humidity":json_data["main"]["humidity"],
+		
+		"weather_icon":json_data["weather"][0]["icon"],
+		"weather_title":json_data["weather"][0]["main"],
+		"weather_caption":json_data["weather"][0]["description"],
+		
+	
+
+		
+		};
+	return output;
+	}
+
+
+function convert_kelvin_to_celes(value)
+	{
+	return value - 273;
+	}
+
+
+async function update_weather_elements()
+	{
+	let data = await return_needed_data_from_weather_api();
+	console.log(data);
+
+	let wind_speed = data["wind_speed"];
+	let wind_angle = data["wind_deg"];
+	let wind_gust = data["wind_gust"];
+
+	document.getElementById("wind_speed_holder").innerText = wind_speed;
+	document.getElementById("wind_angle_holder").innerText = wind_angle;
+	document.getElementById("wind_gust_holder").innerText = wind_gust;
+
+	let temp = data["temp"];
+	document.getElementById("temp_holder").innerText = Math.floor(convert_kelvin_to_celes(temp));
+
+
+	let humidity = data["humidity"];
+	document.getElementById("humidity_holder").innerText = humidity;
+	
+	
+	let weather_icon = data["weather_icon"];
+	let weather_title = data["weather_title"];
+    let weather_caption = data["weather_caption"];
+	
+	let weather_status_icon = document.getElementById("weather_status_icon");
+	let weather_title_holder = document.getElementById("weather_title_holder");
+	let weather_caption_holder = document.getElementById("weather_caption_holder");
+	
+	
+	weather_status_icon.src = `/static/weather_icons/${weather_icon}.png`;
+	//weather_title_holder.innerText = weather_title;
+	weather_caption_holder.innerText = weather_caption;
+	}
+
+update_weather_elements()
+setInterval(update_weather_elements, WEATHER_API_UPDATING_DELAY_IN_MS);
+
+
+//weather status related 
+
+	
+	
+	
+	
+	weather_status_icon
+	weather_title_holder
+	weather_caption_holder
+
+</script>
+
+
+<script>
+//updating air pollution things 
+const AIR_POLLUTION_API_URL = "http://api.openweathermap.org/data/2.5/air_pollution?lat=5.7415&lon=51.5300&appid=1340efe030f838cd04d062ed85d74913";
+const AIR_POLLUTION_API_UPDATING_DELAY_IN_MS = 1000 * 60 * 60 * 5; //5 HOUR
+
+async function return_needed_data_from_air_pollution_api()
+	{
+	let r = await fetch(AIR_POLLUTION_API_URL);
+	let json_data = await r.json();
+	console.log(json_data);
+	let output = json_data["list"]["0"]["components"];
+	return output;
+	}
+
+
+async function update_air_pollution()
+	{
+	let data = await return_needed_data_from_air_pollution_api();
+	let componentes = ["co", "no", "no2", "o3", "so2", "pm2_5", "pm10", "nh3"];
+	let value_holders_ids = ["co_value","no_value","no2_value","o3_value","so2_value","pm2_5_value","pm10_value","nh3_value"];
+	let bar_ids = ["co_bar","no_bar","no2_bar","o3_bar","so2_bar","pm2_5_bar","pm10_bar","nh3_bar"];
+	for (let index in componentes)
+		{
+		let component_name = componentes[index];
+		let component_value_holder = value_holders_ids[index];
+		let component_bar = bar_ids[index];
+
+		let value = data[component_name];
+		
+		}
+
+
+
+
+
+	}
+
+
+update_air_pollution()
+setInterval(update_air_pollution, AIR_POLLUTION_API_UPDATING_DELAY_IN_MS);
+
+
+
+
+/*
+async function get_air_pollution_data_for_canvasjs_chart()
+	{
+	let raw_data = await return_needed_data_from_air_pollution_api();
+	let output = [];
+	const HEADERS = ["co", "no", "no2"];
+	for (header of HEADERS)
+		{
+		output.push
+			(
+			{y:raw_data[header], label:header},
+			);
+		}
+	return output;
+	}
+
+
+var chart = new CanvasJS.Chart("air_pollution_div_1", {
+	animationEnabled: true,
+	theme: "dark1", // "light1", "light2", "dark1", "dark2"
+    legend: {
+        display: false
+    },
+	title:{
+		text: "air pollution"
+	},
+	axisY: {
+		title: "Reserves(MMbbl)"
+	},
+	data: [{        
+		type: "column",  
+		legendText: "MMbbl = one million barrels",
+		dataPoints: [      
+			{ y: 300878, label: "Venezuela" },
+			{ y: 266455,  label: "Saudi" },
+			{ y: 169709,  label: "Canada" },
+
+		]
+	}]
+});
+chart.render();
+*/
+</script>
+
+
+
+
+
+
+
+
+<script>
+var base_net_speed = 3;
+const NETWORK_SPEED_TEST_CHECK_FROM_SERVER_DELAY = 1000*3600;
+const NET_WORK_SPEED_TEXT_DISPLAY_UPDATING_DELAY = 250;
+
+var opts = 
+	{
+  angle: 0.15, // The span of the gauge arc
+  lineWidth: 0.1, // The line thickness
+  radiusScale: 1, // Relative radius
+  pointer: {
+    length: 0.6, // // Relative to gauge radius
+    strokeWidth: 0.038, // The thickness
+    color: '#fff' // Fill color
+  },
+  limitMax: false,     // If false, max value increases automatically if value > maxValue
+  limitMin: false,     // If true, the min value of the gauge will be fixed
+  colorStart: '#fff',   // Colors
+  colorStop: '#fff',    // just experiment with them
+  strokeColor: '#E0E0E0',  // to see which ones work best for you
+  generateGradient: true,
+  highDpiSupport: true,     // High resolution support
+   renderTicks: {
+    divisions: 5,
+    divWidth: 1.1,
+    divLength: 0.7,
+    divColor: '#333333',
+    subDivisions: 1,
+    subLength: 0.5,
+    subWidth: 0.6,
+    subColor: '#666666'
+  } 
+  
+	};
+var target = document.getElementById('net_speed_gauge'); // your canvas element
+var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+
+gauge.maxValue = 25; // set max gauge value
+gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+gauge.animationSpeed = 29; // set animation speed (32 is default value)
+ // set actual value
+
+async function update_base_internet_speed()
+	{
+	let r  = await fetch("/get_net_speed_ib_bytes_per_second");
+	base_net_speed = await +r.text();
+	}
+
+
+function updatae_net_speed_text_display()
+	{
+	let speed = (base_net_speed)+Math.random()*0.25;
+	speed = speed.toFixed(2);
+	gauge.set(speed);
+	document.getElementById("net_speed_value").innerText = `${speed}MB`
+	}
+
+
+setInterval(updatae_net_speed_text_display, NET_WORK_SPEED_TEXT_DISPLAY_UPDATING_DELAY);	
+
+</script>
+
+
+<script>
+//authority_logo_holder logo handling 
+let authority_logo_urls = ["/static/gov_icon.png", "/static/abaas_abad_company_logo.png"];
+const DELAY_OF_AUTHORITY_LOGO_SWAPPING = 5000;
+
+
+
+
+function swap_authority_logo_dispaly()
+	{
+	let current_authority_logo = random_choice_from_iterable(authority_logo_urls);
+	document.getElementById("authority_logo_holder").src=current_authority_logo;
+	}
+	
+	
+setInterval(swap_authority_logo_dispaly, DELAY_OF_AUTHORITY_LOGO_SWAPPING);
+
+</script>
+
+
+
+<script>
+//auto refreshing
+const AUTO_REFRESH_DELAY = 1000 * 60 * 5;
+
+function refresh_the_page()
+	{
+	location.reload();
+	}
+
+setTimeout(refresh_the_page, AUTO_REFRESH_DELAY);
+</script>
+
+
+
+<script>
+//updating colors of segments according to time of day 
+const DELAY_OF_UPDATING_BACKGROUND_COLORS_OF_SCREENSEGMENTS_ACCORDING_TO_TIME_OF_DAY = 1000;
+function update_background_color_of_screen_segments_according_to_time_of_day()
+	{
+	for (segment of list_of_screen_segments)
+		{
+		let current_hour = new Date().getHours();
+		let lumination = 0;
+		if (current_hour <= 12)
+			{
+			lumination = 50 * (1-((current_hour-12)/12));
+			}
+		if (current_hour > 12)
+			{
+			lumination = 50 * (current_hour/12);
+			}
+		segment.style.backgroundColor = `hsl(214.8,100%,${lumination}%)`;
+		}
+	}
+	
+	
+setInterval(update_background_color_of_screen_segments_according_to_time_of_day, DELAY_OF_UPDATING_BACKGROUND_COLORS_OF_SCREENSEGMENTS_ACCORDING_TO_TIME_OF_DAY)
+
+</script>
+
+

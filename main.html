@@ -1,0 +1,328 @@
+<meta charset="UTF-8">
+
+
+<script src="static/gauge.js"></script>
+<script src="static/canvasjs.min.js"></script>
+
+
+
+<script> 
+
+let currently_selected_segment = null;
+let list_of_screen_segments = [];
+
+
+let MOVING_SPEED = 1;
+let RESIZING_SPEED = 1;
+
+const BUTTON__MOVE_UP = "ArrowUp";
+const BUTTON__MOVE_DOWN = "ArrowDown";
+const BUTTON__MOVE_RIGHT = "ArrowRight";
+const BUTTON__MOVE_LEFT = "ArrowLeft";
+
+const BUTTON__RESIZE_X_UP = "d";
+const BUTTON__RESIZE_X_DOWN = "a";
+const BUTTON__RESIZE_Y_UP = "w";
+const BUTTON__RESIZE_Y_DOWN = "s";
+
+const BUTTON__SAVE_DATA = "n";
+
+function dry_0(target_el, target_stylr_attr)
+	{
+	return +target_el.style[target_stylr_attr].replace("px", "");
+	}
+
+function dump_data_of_all_segements()
+	{
+	/*
+	ORDER OF DATA 
+
+	NAME OF SEGMENT 
+	START X 
+	START Y 
+	HEIGHT 
+	WIDTH 
+	INNER HTML 
+	*/
+	output = "";
+	for (let segment of list_of_screen_segments)
+		{
+		let name = segment.name_of_segement;
+		let start_x = dry_0(segment, "left");
+		let start_y = dry_0(segment, "top");
+		let height = dry_0(segment, "height");
+		let width = dry_0(segment, "width");
+		let innerHTML = segment.innerHTML;
+		sub = `
+from_singular_seg(
+	"${name}",
+	${start_x},${start_y},${height},${width},
+	\`
+	${innerHTML}
+	\`
+	);
+`;
+		output+=sub;
+		}
+	return output;
+	}
+
+
+async function save_segment_data()
+	{
+	await fetch(`/set_segements_data`,
+		{
+		method:"POST",
+		headers:
+			{
+			"Content-Type":"application/json",
+			},
+		body: JSON.stringify({"data":dump_data_of_all_segements()})	
+		}
+
+		);
+	
+	}
+
+
+function from_singular_seg(name_of_segement, start_x, start_y, height, width, inner_html_text)
+	{
+	let output = document.createElement("div");
+	output.name_of_segement = name_of_segement;
+	output.classList.add("singular_seg");
+	output.innerHTML = inner_html_text;
+	let s = output.style;
+	s.top = `${start_y}PX`;
+	s.left  = `${start_x}PX`;
+	s.height = `${height}px`;
+	s.width = `${width}px`;
+	document.body.appendChild(output);
+
+	//method formation 
+	output.onclick = function f()
+		{
+			currently_selected_segment = output;
+			console.log(output);
+			console.log("above object became the currently_selected_segment")
+		};
+
+
+
+	list_of_screen_segments.push(output);
+	return output;
+	}
+
+
+function from_singular_seg_1(start_x, start_y, end_x, end_y)
+	{
+	let height = end_x - start_x;
+	let width = end_y - start_y;
+	from_singular_seg(start_x, end_x, height, width);
+	}
+
+
+</script>
+
+
+
+
+<body>
+</body>
+
+
+<script>
+
+function cem_abstaract_function(attr_name, diff)
+	{
+	let value = currently_selected_segment.style[attr_name].replace("px", "");
+	value = +value; //conversion to int
+	value += diff;
+	let formatted = `${value}px`;
+	currently_selected_segment.style[attr_name] = formatted; 
+	}
+
+function cem__move_y_up()
+	{
+	cem_abstaract_function("top", -1*MOVING_SPEED);
+	}
+
+
+
+function cem__move_y_down()
+	{
+	cem_abstaract_function("top", +1*MOVING_SPEED);
+	}
+
+
+function cem__move_x_left() 
+	{
+	cem_abstaract_function("left", +1*MOVING_SPEED);
+	}
+
+
+function cem__move_x_right()
+	{
+	cem_abstaract_function("left", -1*MOVING_SPEED);
+	}
+
+
+
+function cem__resize_x_up()
+	{
+	cem_abstaract_function("width", +1*RESIZING_SPEED)
+	}
+
+
+function cem__resize_x_down()
+	{
+	cem_abstaract_function("width", -1*RESIZING_SPEED)
+	}
+
+
+
+function cem__resize_y_up()
+	{
+	cem_abstaract_function("height", +1*RESIZING_SPEED)
+	}
+
+
+function cem__resize_y_down()
+	{
+	cem_abstaract_function("height", -1*RESIZING_SPEED)
+	}
+
+
+
+
+//............................
+document.addEventListener("keydown",
+	function f(event)
+		{
+		console.log(event);
+		let key = event.key;
+		c = console.log;
+		if (key == BUTTON__MOVE_UP)
+			{
+			cem__move_y_up();
+			c("moving up")
+			}
+
+		if (key == BUTTON__MOVE_DOWN)
+			{
+			cem__move_y_down();
+			c("moving down")
+			}
+
+
+		if (key ==  BUTTON__MOVE_LEFT)
+			{
+			cem__move_x_right();
+			c("moving right");
+			}
+
+
+		if (key ==BUTTON__MOVE_RIGHT )	
+			{
+			cem__move_x_left();
+			c("moving left");
+			}
+
+		if (key == BUTTON__RESIZE_X_UP)
+			{
+			cem__resize_x_up();
+			}
+
+		if (key == BUTTON__RESIZE_X_DOWN)
+			{
+			cem__resize_x_down();
+			}
+
+		if (key == BUTTON__RESIZE_Y_DOWN)
+			{
+			cem__resize_y_up();
+			}
+
+
+		if (key == BUTTON__RESIZE_Y_UP)
+			{
+			cem__resize_y_down()
+			}
+
+		if (key == "n" || key == "N")
+			{
+			save_segment_data();
+			}
+		}
+	);
+
+
+
+
+/*
+from_singular_seg(
+	"1",
+	0,0,344,172,
+	`
+	<h1> 1 </h1>
+	<h1> SECTION </h1>
+	`
+	);
+
+from_singular_seg(
+	"2",
+	172,0,344,173,
+	`
+	<h1> 2 </h1>
+	<h1> SECTION </h1>
+	`
+	);
+
+
+from_singular_seg(
+	"3",
+	344,0,430,173,
+	`
+	<h1> 3 </h1>
+	<h1> SECTION </h1>
+	`
+	);
+
+from_singular_seg(
+	"4",
+	515,0,602,173,
+	`
+	<h1> 4 </h1>
+	<h1> SECTION </h1>
+	`
+	);
+
+
+
+from_singular_seg(
+	"5",
+	1030,0,172,172,
+	`
+	<h1> 5 </h1>
+	<h1> SECTION </h1>
+	`
+	);
+
+
+
+
+
+from_singular_seg(
+	"6",
+	687,170,518,515,
+	`
+	<h1> 6 </h1>
+	<h1> SECTION </h1>
+	`
+	);
+
+*/
+
+
+</script>
+
+
