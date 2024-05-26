@@ -108,6 +108,87 @@ class video_playlist_manager
 </script>
 
 
+<script>
+//just forming the temp gauge 
+
+var temp_gauge_options = {
+  //percentColors : [[0.0, "#4ae6ff" ], [0.10, "#f9c802"], [0.50, "#f9c802"], [1.0, "#ff0000"]],
+  angle: 0.01, // The span of the gauge arc
+  lineWidth: 0.1, // The line thickness
+  radiusScale: 0.8, // Relative radius
+  pointer: {
+    length: 0.0, // // Relative to gauge radius
+    strokeWidth: 0.038, // The thickness
+    color: '#fff' // Fill color
+  },
+  limitMax: false,     // If false, max value increases automatically if value > maxValue
+  limitMin: false,     // If true, the min value of the gauge will be fixed
+  colorStart: '#ff4800',   // Colors
+  colorStop: '#ff4800',    // just experiment with them
+  strokeColor: '#E0E0E0',  // to see which ones work best for you
+  highDpiSupport: true,     // High resolution support
+   renderTicks: {
+    divisions: 5,
+    divWidth: 1.1,
+    divLength: 0.7,
+    divColor: '#333333',
+    subDivisions: 1,
+    subLength: 0.5,
+    subWidth: 0.6,
+    subColor: '#666666'
+	}
+  }
+  
+var temp_canvas = document.getElementById('temp_canvas'); // your canvas element  
+var temp_gauge = new Gauge(temp_canvas).setOptions(temp_gauge_options); // create sexy gauge!  
+  
+temp_gauge.maxValue = 60; // set max gauge value  
+temp_gauge.setMinValue(-15);  // Prefer setter over gauge.minValue = 0  
+temp_gauge.animationSpeed = 100; // set animation speed (32 is default value)  
+
+</script>
+
+
+<script>
+//just forming the temp gauge 
+
+var humidity_gauge_options = {
+  //percentColors : [[0.0, "#4ae6ff" ], [0.10, "#f9c802"], [0.50, "#f9c802"], [1.0, "#ff0000"]],
+  angle: 0.01, // The span of the gauge arc
+  lineWidth: 0.1, // The line thickness
+  radiusScale: 0.8, // Relative radius
+  pointer: {
+    length: 0.0, // // Relative to gauge radius
+    strokeWidth: 0.038, // The thickness
+    color: '#fff' // Fill color
+  },
+  limitMax: false,     // If false, max value increases automatically if value > maxValue
+  limitMin: false,     // If true, the min value of the gauge will be fixed
+  colorStart: '#00e7ff',   // Colors
+  colorStop:  '#00e7ff',    // just experiment with them
+  strokeColor: '#000',  // to see which ones work best for you
+  highDpiSupport: true,     // High resolution support
+   renderTicks: {
+    divisions: 5,
+    divWidth: 1.1,
+    divLength: 0.7,
+    divColor: '#333333',
+    subDivisions: 1,
+    subLength: 0.5,
+    subWidth: 0.6,
+    subColor: '#666666'
+	}
+  }
+  
+var humidity_canvas = document.getElementById('humidity_canvas'); // your canvas element  
+var humidity_gauge = new Gauge(humidity_canvas).setOptions(humidity_gauge_options); // create sexy gauge!  
+  
+humidity_gauge.maxValue = 100; // set max gauge value  
+humidity_gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0  
+humidity_gauge.animationSpeed = 100; // set animation speed (32 is default value)  
+
+</script>
+
 
 <script>
 const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather?lat=35.7415&lon=51.5300&appid=1340efe030f838cd04d062ed85d74913";
@@ -173,11 +254,13 @@ async function update_weather_elements()
 	
 
 	let temp = data["temp"];
-	document.getElementById("temp_holder").innerText = Math.floor(convert_kelvin_to_celes(temp));
-
+	let temp_pre_format = Math.floor(convert_kelvin_to_celes(temp));
+	document.getElementById("temp_holder").innerText = `${temp_pre_format}C`;
+	temp_gauge.set(convert_kelvin_to_celes(temp));  
 
 	let humidity = data["humidity"];
-	document.getElementById("humidity_holder").innerText = humidity;
+	document.getElementById("humidity_holder").innerText = `${humidity} g/m**-3`;
+	humidity_gauge.set(humidity);
 	
 	
 	let weather_icon = data["weather_icon"];

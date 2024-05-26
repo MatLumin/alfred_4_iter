@@ -110,7 +110,7 @@ from_singular_seg(
 	
 	
 	
-	
+
 	
 	
 	
@@ -255,16 +255,13 @@ from_singular_seg(
 	
 
 	
-	<img id="temp_logo" src="static/temp_icon.png">
 
 
-	<h2 class="weather_value" id="temp_holder"></h2>
-	<h2 class="weather_value">C</h2>
 
-	<img id="humidity_logo" src="/static/drop_icon.png">
 
-	<h2 class="weather_value" id="humidity_holder"></h2>
-	
+
+
+
 	
 	
 	
@@ -370,12 +367,15 @@ from_singular_seg(
 	
 	
 	
+	<h1 class="weather_label">Temp:</h1>
+	<canvas id="temp_canvas" height="47px" width="61px"></canvas>
+	<h2 class="weather_value" id="temp_holder"></h2>
 
-sadad
 
+	<h1 class="weather_label">humidity:</h1>
+	<canvas id="humidity_canvas" height="47px" width="61px"></canvas>	
+	<h2 class="weather_value" id="humidity_holder"></h2>
 	
-
-
 	
 	
 	
