@@ -108,7 +108,7 @@ from_singular_seg(
 	
 	
 			
-	<h1 id="unix_title"> UNIX: </h1>
+	<h1 id="unix_title" onclick="pbv()"> UNIX: </h1>
 	<div id="hour_minute_flex">
 		<h1 id="hour_dispaly"></h1>
 		<pre id="hour_minute_delimiter">:</pre>
@@ -183,7 +183,7 @@ from_singular_seg(
 	787,0,96,122,
 	`
 	
-	<img src="/static/mossito_icon_1.PNG" id="mositto_logo" onclick="pbv()">
+	<img src="/static/mossito_icon_1.PNG" id="mositto_logo" >
 
 			
 	
