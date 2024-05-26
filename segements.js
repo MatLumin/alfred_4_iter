@@ -182,10 +182,8 @@ from_singular_seg(
 	"5",
 	787,0,96,122,
 	`
-	
-<h1 id="net_speed_title">Net speed:</h1>	
-<canvas id="net_speed_gauge" width="100" height="50"></canvas>
-<h1 id="net_speed_value"></h1>
+	<img src="/static/mossito_icon_1.PNG" id="mositto_logo">
+
 			
 	
 	
@@ -308,13 +306,15 @@ from_singular_seg(
 	
 	
 	
-	
+	<h1 id="net_speed_title">Net speed:</h1>	
+	<canvas id="net_speed_gauge" width="100" height="50"></canvas>
+	<h1 id="net_speed_value"></h1>
 	
 	
 	
 	
 			
-	<img src="/static/mossito_icon_1.PNG" id="mositto_logo">
+
 	
 	
 	
