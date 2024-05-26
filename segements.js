@@ -20,18 +20,16 @@ from_singular_seg(
 	
 	
 	
-			
-	<img class="wind_logo" src="static/wind_logo.png">
-	<h2 class="weather_label">Speed:</h2>
-		<h2 class="weather_value" id="wind_speed_holder"></h2>
 
-	<h2 class="weather_label">angle:</h2>
-		<h2 class="weather_value" id="wind_angle_holder"></h2>
 
-	<h2 class="weather_label">gust:</h2>
-		<h2 class="weather_value" id="wind_gust_holder"></h2>		
-
-			
+		<h1 id="unix_title" onclick="pbv()"> UNIX: </h1>
+	<div id="hour_minute_flex">
+		<h1 id="hour_dispaly"></h1>
+		<pre id="hour_minute_delimiter">:</pre>
+		<h1 id="minute_display"></h1>    
+	</div>
+	<h2 id="unix_clock">1715599131885</h2>
+	<h2 id="full_date">5/13/2024</h2>		
 	
 	
 	
@@ -95,7 +93,16 @@ from_singular_seg(
 	
 	
 	
-	
+				
+	<img class="wind_logo" src="static/wind_logo.png">
+	<h2 class="weather_label">Speed:</h2>
+		<h2 class="weather_value" id="wind_speed_holder"></h2>
+
+	<h2 class="weather_label">angle:</h2>
+		<h2 class="weather_value" id="wind_angle_holder"></h2>
+
+	<h2 class="weather_label">gust:</h2>
+		<h2 class="weather_value" id="wind_gust_holder"></h2>		
 	
 	
 	
@@ -108,14 +115,7 @@ from_singular_seg(
 	
 	
 			
-	<h1 id="unix_title" onclick="pbv()"> UNIX: </h1>
-	<div id="hour_minute_flex">
-		<h1 id="hour_dispaly"></h1>
-		<pre id="hour_minute_delimiter">:</pre>
-		<h1 id="minute_display"></h1>    
-	</div>
-	<h2 id="unix_clock">1715599131885</h2>
-	<h2 id="full_date">5/13/2024</h2>
+
 			
 	
 	
