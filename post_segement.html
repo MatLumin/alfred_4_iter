@@ -1,5 +1,7 @@
 
-
+<script>
+const MOSITTO_ORANGE = "#ff4115"
+</script>
 
 
 <script>
@@ -123,8 +125,8 @@ var temp_gauge_options = {
   },
   limitMax: false,     // If false, max value increases automatically if value > maxValue
   limitMin: false,     // If true, the min value of the gauge will be fixed
-  colorStart: '#ff4800',   // Colors
-  colorStop: '#ff4800',    // just experiment with them
+  colorStart: MOSITTO_ORANGE,   // Colors
+  colorStop: MOSITTO_ORANGE,    // just experiment with them
   strokeColor: '#E0E0E0',  // to see which ones work best for you
   highDpiSupport: true,     // High resolution support
    renderTicks: {
@@ -150,7 +152,7 @@ temp_gauge.animationSpeed = 100; // set animation speed (32 is default value)
 
 
 <script>
-//just forming the temp gauge 
+//just forming the humidity gauge 
 
 var humidity_gauge_options = {
   //percentColors : [[0.0, "#4ae6ff" ], [0.10, "#f9c802"], [0.50, "#f9c802"], [1.0, "#ff0000"]],
@@ -191,7 +193,48 @@ humidity_gauge.animationSpeed = 100; // set animation speed (32 is default value
 
 
 <script>
-const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather?lat=35.7415&lon=51.5300&appid=1340efe030f838cd04d062ed85d74913";
+//just forming the air speed angle compass
+
+var air_speed_angle_gauge_options = {
+  //percentColors : [[0.0, "#4ae6ff" ], [0.10, "#f9c802"], [0.50, "#f9c802"], [1.0, "#ff0000"]],
+  angle: 0, // The span of the gauge arc
+  lineWidth: 0.1, // The line thickness
+  radiusScale: 0.7, // Relative radius
+  pointer: {
+    length: 0.0, // // Relative to gauge radius
+    strokeWidth: 0.038, // The thickness
+    color: '#fff' // Fill color
+  },
+  limitMax: false,     // If false, max value increases automatically if value > maxValue
+  limitMin: false,     // If true, the min value of the gauge will be fixed
+  colorStart: '#00e7ff',   // Colors
+  colorStop:  '#00e7ff',    // just experiment with them
+  strokeColor: '#000',  // to see which ones work best for you
+  highDpiSupport: true,     // High resolution support
+   renderTicks: {
+    divisions: 5,
+    divWidth: 1.1,
+    divLength: 0.7,
+    divColor: '#333333',
+    subDivisions: 1,
+    subLength: 0.5,
+    subWidth: 0.6,
+    subColor: '#666666'
+	}
+  }
+  
+var air_speed_angle_canvas = document.getElementById('air_speed_angle_canvas'); // your canvas element  
+var air_speed_angle_gauge = new Gauge(air_speed_angle_canvas).setOptions(air_speed_angle_gauge_options); // create sexy gauge!  
+  
+air_speed_angle_gauge.maxValue = 360; // set max gauge value  
+air_speed_angle_gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0  
+air_speed_angle_gauge.animationSpeed = 100; // set animation speed (32 is default value)  
+
+</script>
+
+
+<script>
+const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather?lat=35.7203&lon=51.4088&appid=1340efe030f838cd04d062ed85d74913";
 const WEATHER_API_UPDATING_DELAY_IN_MS = 1000 * 3600 * 2; //2 HOUR
 const MAX_WIND_SPEED = 15;
 const HIGHEST_WIND_ICON_ANIAMTION_DURATION = 1;
@@ -241,6 +284,7 @@ async function update_weather_elements()
 
 	document.getElementById("wind_speed_holder").innerText = `${wind_speed} km/h`;
 	document.getElementById("wind_angle_holder").innerText = `${wind_angle} deg`;
+	air_speed_angle_gauge.set(wind_angle);
 	document.getElementById("wind_gust_holder").innerText = wind_gust;
 	
 	
@@ -396,18 +440,18 @@ const NET_WORK_SPEED_TEXT_DISPLAY_UPDATING_DELAY = 250;
 
 var opts = 
 	{
-  angle: 0.15, // The span of the gauge arc
+  angle: 0.10, // The span of the gauge arc
   lineWidth: 0.1, // The line thickness
   radiusScale: 1, // Relative radius
   pointer: {
     length: 0.6, // // Relative to gauge radius
     strokeWidth: 0.038, // The thickness
-    color: '#fff' // Fill color
+    color: '#ff4115' // Fill color
   },
   limitMax: false,     // If false, max value increases automatically if value > maxValue
   limitMin: false,     // If true, the min value of the gauge will be fixed
-  colorStart: '#fff',   // Colors
-  colorStop: '#fff',    // just experiment with them
+  colorStart: '#ff4115',   // Colors
+  colorStop: '#ff4115',    // just experiment with them
   strokeColor: '#E0E0E0',  // to see which ones work best for you
   generateGradient: true,
   highDpiSupport: true,     // High resolution support

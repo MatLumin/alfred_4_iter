@@ -98,9 +98,11 @@ from_singular_seg(
 	<h2 class="weather_label">Speed:</h2>
 		<h2 class="weather_value" id="wind_speed_holder"></h2>
 
-	<h2 class="weather_label">angle:</h2>
-		<h2 class="weather_value" id="wind_angle_holder"></h2>
-
+	<h2 class="weather_label" hidden>angle:</h2>
+		<h2 class="weather_value" id="wind_angle_holder" hidden></h2>
+		
+		
+	<canvas id="air_speed_angle_canvas" height="47px" width="61px"></canvas>
 	<h2 class="weather_label" hidden>gust:</h2>
 		<h2 class="weather_value" id="wind_gust_holder" hidden></h2>		
 	
