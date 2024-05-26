@@ -182,6 +182,7 @@ from_singular_seg(
 	"5",
 	787,0,96,122,
 	`
+	
 	<img src="/static/mossito_icon_1.PNG" id="mositto_logo" onclick="pbv()">
 
 			
