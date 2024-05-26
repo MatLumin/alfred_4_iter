@@ -24,7 +24,7 @@ function random_choice_from_iterable(iterable)
 		document.getElementById("full_date").innerText = Intl.DateTimeFormat("en").format(new Date());
 		let current_clock = new Date();
 		document.getElementById("hour_dispaly").innerText = `${current_clock.getHours()}`;
-		document.getElementById("hour_minute_delimiter").innerText = [":", " "][+(Date.now()%2==0)];
+		document.getElementById("hour_minute_delimiter").innerText = [":", " "][+(Math.floor(Date.now())%2==0)];
 		document.getElementById("minute_display").innerText = `${current_clock.getMinutes()}`;
 		}                        
 
