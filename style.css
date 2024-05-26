@@ -16,7 +16,7 @@
 	{
 	font-family: font_0;
 	color: white;
-	asd
+
 	}
 
 
@@ -316,3 +316,19 @@ body
 	}
 	
 	
+.air_polltion_title
+	{
+	font-size:large;
+	}
+	
+
+.air_pollution_value 
+	{
+	font-size:x-small;
+	}
+	
+
+.air_polltion_polluter_title
+	{
+	font-size:small;
+	}

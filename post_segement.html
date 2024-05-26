@@ -1,6 +1,9 @@
 
 <script>
 const MOSITTO_ORANGE = "#ff4115"
+const LAT = 35.7203;
+const AIR_POLLUTION_STROKES_COLR = [[0.0, "#34ebeb" ], [0.10, "#43eb34"], [0.20, "#ebe534"], [0.40, "#eb6e34"], [0.65, "#eb3434"], [0.75, "#a834eb"]];
+const LONG = 51.4088;
 </script>
 
 
@@ -234,7 +237,7 @@ air_speed_angle_gauge.animationSpeed = 100; // set animation speed (32 is defaul
 
 
 <script>
-const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather?lat=35.7203&lon=51.4088&appid=1340efe030f838cd04d062ed85d74913";
+const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LONG}&appid=1340efe030f838cd04d062ed85d74913`;
 const WEATHER_API_UPDATING_DELAY_IN_MS = 1000 * 3600 * 2; //2 HOUR
 const MAX_WIND_SPEED = 15;
 const HIGHEST_WIND_ICON_ANIAMTION_DURATION = 1;
@@ -293,7 +296,7 @@ async function update_weather_elements()
 	for (let wind_icon of wind_icons)
 		{
 		wind_icon.style.animationDuration = `${HIGHEST_WIND_ICON_ANIAMTION_DURATION/(wind_speed/MAX_WIND_SPEED)}s`;
-		wind_icon.style.animationDelay = `${Math.random()*1}s`;
+		wind_icon.style.animationDelay = `${Math.random()*4}s`;
 		}	
 	
 
@@ -339,8 +342,47 @@ setInterval(update_weather_elements, WEATHER_API_UPDATING_DELAY_IN_MS);
 
 
 <script>
+//air pollution gauge formers 
+let AIR_POLLUTION_GAUGES = {};
+
+function form_gauge_for_air_pollutor(canvas_id, component_name)
+	{
+	var options = {
+	  //
+	  percentColors : AIR_POLLUTION_STROKES_COLR,
+	  angle: 0, // The span of the gauge arc
+	  lineWidth: 0.1, // The line thickness
+	  radiusScale: 0.7, // Relative radius
+	  pointer: {
+		length: 0.0, // // Relative to gauge radius
+	  },
+	  colorStart: '#00e7ff',   // Colors
+	  colorStop:  '#00e7ff',    // just experiment with them
+	  strokeColor: '#fff',  // to see which ones work best for you
+	  highDpiSupport: true,     // High resolution support
+	  }
+  
+	var canvas = document.getElementById(canvas_id); // your canvas element  
+	var gauge = new Gauge(canvas).setOptions(options); // create sexy gauge!  
+	air_speed_angle_gauge.maxValue = 600; // set max gauge value  
+	air_speed_angle_gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0  
+	air_speed_angle_gauge.animationSpeed = 100; // set animation speed (32 is default value)  
+	AIR_POLLUTION_GAUGES[component_name] = gauge;
+	}
+	
+form_gauge_for_air_pollutor("canvas_of_co","co");
+form_gauge_for_air_pollutor("canvas_of_no","no");
+form_gauge_for_air_pollutor("canvas_of_no2","no2");
+form_gauge_for_air_pollutor("canvas_of_o3", "o3");
+form_gauge_for_air_pollutor("canvas_of_so2", "so2");
+form_gauge_for_air_pollutor("canvas_of_pm2_5","pm2_5");
+form_gauge_for_air_pollutor("canvas_of_pm10", "pm110");
+
+</script>
+
+<script>
 //updating air pollution things 
-const AIR_POLLUTION_API_URL = "http://api.openweathermap.org/data/2.5/air_pollution?lat=5.7415&lon=51.5300&appid=1340efe030f838cd04d062ed85d74913";
+const AIR_POLLUTION_API_URL = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${LAT}&lon=${LONG}&appid=1340efe030f838cd04d062ed85d74913`;
 const AIR_POLLUTION_API_UPDATING_DELAY_IN_MS = 1000 * 60 * 60 * 5; //5 HOUR
 
 async function return_needed_data_from_air_pollution_api()
@@ -357,16 +399,11 @@ async function update_air_pollution()
 	{
 	let data = await return_needed_data_from_air_pollution_api();
 	let componentes = ["co", "no", "no2", "o3", "so2", "pm2_5", "pm10", "nh3"];
-	let value_holders_ids = ["co_value","no_value","no2_value","o3_value","so2_value","pm2_5_value","pm10_value","nh3_value"];
-	let bar_ids = ["co_bar","no_bar","no2_bar","o3_bar","so2_bar","pm2_5_bar","pm10_bar","nh3_bar"];
-	for (let index in componentes)
+	for (let component of componentes)
 		{
-		let component_name = componentes[index];
-		let component_value_holder = value_holders_ids[index];
-		let component_bar = bar_ids[index];
+		let value = data[component];
+		AIR_POLLUTION_GAUGES[component].set(value);
 
-		let value = data[component_name];
-		
 		}
 
 

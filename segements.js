@@ -169,8 +169,8 @@ from_singular_seg(
 	
 	
 	
-	<div id="air_pollution_div_1"</div>
-	
+
+
 	
 	
 	
@@ -264,8 +264,8 @@ from_singular_seg(
 
 
 
-	
-	
+
+
 	
 	
 	
@@ -451,8 +451,22 @@ from_singular_seg(
 
 
 
+	<h1 class="air_polltion_title">AIR POLLUTOIN</h1>
+	
+	<h1 class="air_polltion_polluter_title">NO2</h1>
+	<span class="air_pollution_value" id="value_holder_of_no2">
+	<canvas id="canvas_of_no2" height="47px" width="61px" ></canvas>
+	
+	
+	<h1 class="air_polltion_polluter_title">O3</h1>
+	<span class="air_pollution_value" id="value_holder_of_o3">
+	<canvas id="canvas_of_o3" height="47px" width="61px" ></canvas>
+	
+	
+	<h1 class="air_polltion_polluter_title">CO</h1>
+	<span class="air_pollution_value" id="value_holder_of_co">
+	<canvas id="canvas_of_co" height="47px" width="61px" ></canvas>
 
-<canvas id="air_pollution_chart_1"></canvas>
 
 
 
@@ -472,8 +486,29 @@ from_singular_seg(
 	681,384,430,114,
 	`
 	
-
-	asfaf
+	<h1 class="air_polltion_title">AIR POLLUTOIN</h1>
 	
+
+	<h1 class="air_polltion_polluter_title">SO2</h1>
+	<span class="air_pollution_value" id="value_holder_of_so2">	
+	<canvas id="canvas_of_so2" height="47px" width="61px" ></canvas>
+	
+
+	
+	<h1 class="air_polltion_polluter_title">PM2.5</h1>	
+	<span class="air_pollution_value" id="value_holder_of_pm2_5">	
+	<canvas id="canvas_of_pm2_5" height="47px" width="61px" ></canvas>
+	
+	
+		
+	<h1 class="air_polltion_polluter_title">PM10</h1>
+	<span class="air_pollution_value" id="value_holder_of_pm10">
+	<canvas id="canvas_of_pm10" height="47px" width="61px" ></canvas>
+	
+	
+		
+	<h1 class="air_polltion_polluter_title">NO</h1>
+	<span class="air_pollution_value" id="value_holder_of_no">
+	<canvas id="canvas_of_no" height="47px" width="61px" ></canvas>	
 	`
 	);
