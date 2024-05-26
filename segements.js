@@ -62,7 +62,7 @@ from_singular_seg(
 			
 	
 	
-	<h1 class="weather_label">Weather</h1>
+	<h1 class="weather_label" onclick="refresh_the_page()">Weather</h1>
 	<img id="weather_status_icon"></img> 
 	<h1 id="weather_title_holder"></h1> 
 	<h1 id="weather_caption_holder"></h1> 
@@ -94,19 +94,19 @@ from_singular_seg(
 	
 	
 				
-	<img class="wind_logo" src="static/wind_logo.png">
+
 	<h2 class="weather_label">Speed:</h2>
 		<h2 class="weather_value" id="wind_speed_holder"></h2>
 
 	<h2 class="weather_label">angle:</h2>
 		<h2 class="weather_value" id="wind_angle_holder"></h2>
 
-	<h2 class="weather_label">gust:</h2>
-		<h2 class="weather_value" id="wind_gust_holder"></h2>		
+	<h2 class="weather_label" hidden>gust:</h2>
+		<h2 class="weather_value" id="wind_gust_holder" hidden></h2>		
 	
-	
-	
-	
+	<img class="wind_logo" src="static/wind_logo.png">
+	<img class="wind_logo" src="static/wind_logo.png">	
+	<img class="wind_logo" src="static/wind_logo.png">	
 	
 	
 	
