@@ -18,8 +18,7 @@ app = Flask("alfred");
 
 
 def read_file_contet(file_path):
-    file_path = "./" + file_path;
-	with open(file_path) as f1:
+	with open("./" + file_path) as f1:
 		return f1.read();
 
 
