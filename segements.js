@@ -214,17 +214,10 @@ from_singular_seg(
 	
 	
 			
-	<video id="first_video_displayer" class="filling_video" src="/get_rand_first_panel_video" loop>
+			
+	<video id="second_video_displayer" class="filling_video" src="/static/0.mp4" loop>
 
-		
-	
-	
-	
-	
-	
-	
 	</video>
-	
 	
 	
 	
@@ -309,7 +302,7 @@ from_singular_seg(
 	<h1 id="net_speed_title">Net speed:</h1>	
 	<canvas id="net_speed_gauge" width="100" height="50"></canvas>
 	<h1 id="net_speed_value"></h1>
-	
+	meow
 	
 	
 	
@@ -349,7 +342,7 @@ from_singular_seg(
 	
 
 			
-	<video id="second_video_displayer" class="filling_video" src="/get_rand_first_panel_video" loop>
+	<video id="second_video_displayer" class="filling_video" src="/static/0.mp4" loop>
 
 	</video>
 	
