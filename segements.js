@@ -182,7 +182,7 @@ from_singular_seg(
 	"5",
 	787,0,96,122,
 	`
-	<img src="/static/mossito_icon_1.PNG" id="mositto_logo">
+	<img src="/static/mossito_icon_1.PNG" id="mositto_logo" onclick="pbv()">
 
 			
 	
@@ -215,7 +215,7 @@ from_singular_seg(
 	
 			
 			
-	<video id="second_video_displayer" class="filling_video" src="/static/0.mp4" loop>
+	<video id="first_video_displayer" class="filling_video" src="/static/0.mp4" loop>
 
 	</video>
 	
