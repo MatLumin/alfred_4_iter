@@ -310,7 +310,8 @@ body
 	
 #weather_caption_holder
 	{
-		font-size:x-large;	
+		font-size:medium;
+		padding:14%;
 		margin:1%;		
 	}
 	
