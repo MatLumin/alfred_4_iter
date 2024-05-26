@@ -112,6 +112,8 @@ class video_playlist_manager
 <script>
 const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather?lat=35.7415&lon=51.5300&appid=1340efe030f838cd04d062ed85d74913";
 const WEATHER_API_UPDATING_DELAY_IN_MS = 1000 * 3600 * 2; //2 HOUR
+const MAX_WIND_SPEED = 15;
+const HIGHEST_WIND_ICON_ANIAMTION_DURATION = 1;
 
 async function return_needed_data_from_weather_api()
 	{
@@ -156,9 +158,19 @@ async function update_weather_elements()
 	let wind_angle = data["wind_deg"];
 	let wind_gust = data["wind_gust"];
 
-	document.getElementById("wind_speed_holder").innerText = wind_speed;
-	document.getElementById("wind_angle_holder").innerText = wind_angle;
+	document.getElementById("wind_speed_holder").innerText = `${wind_speed} km/h`;
+	document.getElementById("wind_angle_holder").innerText = `${wind_angle} deg`;
 	document.getElementById("wind_gust_holder").innerText = wind_gust;
+	
+	
+	//randomise wind icons animations 
+	let wind_icons = document.querySelectorAll(".wind_logo");
+	for (let wind_icon of wind_icons)
+		{
+		wind_icon.style.animationDuration = `${HIGHEST_WIND_ICON_ANIAMTION_DURATION/(wind_speed/MAX_WIND_SPEED)}s`;
+		wind_icon.style.animationDelay = `${Math.random()*1}s`;
+		}	
+	
 
 	let temp = data["temp"];
 	document.getElementById("temp_holder").innerText = Math.floor(convert_kelvin_to_celes(temp));
@@ -422,5 +434,7 @@ function update_background_color_of_screen_segments_according_to_time_of_day()
 //setInterval(update_background_color_of_screen_segments_according_to_time_of_day, DELAY_OF_UPDATING_BACKGROUND_COLORS_OF_SCREENSEGMENTS_ACCORDING_TO_TIME_OF_DAY)
 
 </script>
+
+
 
 
