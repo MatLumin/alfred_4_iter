@@ -28,9 +28,24 @@ function random_choice_from_iterable(iterable)
 		document.getElementById("unix_clock").innerText = Math.floor(Date.now()).toString().slice(0,10);
 		document.getElementById("full_date").innerText = Intl.DateTimeFormat("en").format(new Date());
 		let current_clock = new Date();
-		document.getElementById("hour_dispaly").innerText = `${current_clock.getHours()}`;
+		
+		let hour_value = current_clock.getHours();
+		let hour_formatted = `${hour_value}`;
+		if (hour_value < 10)
+			{
+			hour_formatted = "0" + hour_formatted;
+			}
+
+		document.getElementById("hour_dispaly").innerText = hour_formatted;
 		document.getElementById("hour_minute_delimiter").innerText = [":", " "][+(Math.floor(Date.now())%2==0)];
-		document.getElementById("minute_display").innerText = `${current_clock.getMinutes()}`;
+		let minute_value = current_clock.getMinutes();
+		let minute_foramtted = `${minute_value}`;
+
+		if (minute_value < 10)
+			{
+			minute_foramtted = "0" + minute_foramtted;
+			}
+		document.getElementById("minute_display").innerText = minute_foramtted;
 		}                        
 
 	setInterval(update_unix, 1000);
