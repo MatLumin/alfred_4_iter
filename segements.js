@@ -161,7 +161,9 @@ from_singular_seg(
 	
 	
 	
-	
+	<img class="qr_code_holder" src="static/app_download_qr_code.png">
+
+	</img>
 
 	
 	
