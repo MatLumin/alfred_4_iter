@@ -174,9 +174,9 @@ from_singular_seg(
 	
 	
 		
-	<h2>
+	<h3>
 	scan to download AR APP
-	</h2>
+	</h3>
 	<img id="qr_code_holder" src="static/app_download_qr_code.png">
 	
 	
@@ -381,7 +381,6 @@ from_singular_seg(
 
 			
 	<video id="second_video_displayer" class="filling_video" src="/static/0.mp4" loop="">
-
 	</video>
 	
 	
