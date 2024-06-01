@@ -332,3 +332,10 @@ body
 	{
 	font-size:small;
 	}
+
+
+#qr_code_holder
+	{
+	height: 150px;
+	width: 150px;
+	}

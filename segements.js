@@ -173,7 +173,11 @@ from_singular_seg(
 	
 	
 	
-	
+		
+	<h2>
+	scan to download AR APP
+	</h2>
+	<img id="qr_code_holder" src="static/app_download_qr_code.png">
 	
 	
 
@@ -276,11 +280,7 @@ from_singular_seg(
 	
 	
 	
-		
-	
-	<img class="qr_code_holder" src="static/app_download_qr_code.png">
 
-	</img>
 
 	
 	
