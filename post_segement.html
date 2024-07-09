@@ -308,8 +308,11 @@ async function update_weather_elements()
 	let wind_angle = data["wind_deg"];
 	let wind_gust = data["wind_gust"];
 
-	document.getElementById("wind_speed_holder").innerText = `${wind_speed} km/h`;
-	document.getElementById("wind_angle_holder").innerText = `${wind_angle} deg`;
+	let wind_speed_farsi = farsi_ize_number(wind_speed);
+	let wind_angle_farsi = farsi_ize_number(wind_angle);
+
+	document.getElementById("wind_speed_holder").innerText = `${wind_speed_farsi} km/h`;
+	document.getElementById("wind_angle_holder").innerText = `${wind_angle_farsi} deg`;
 	air_speed_angle_gauge.set(wind_angle);
 	document.getElementById("wind_gust_holder").innerText = wind_gust;
 	
@@ -325,11 +328,13 @@ async function update_weather_elements()
 
 	let temp = data["temp"];
 	let temp_pre_format = Math.floor(convert_kelvin_to_celes(temp));
-	document.getElementById("temp_holder").innerText = `${temp_pre_format}C`;
+	let temp_pre_format_farsi = farsi_ize_number(temp_pre_format);
+	document.getElementById("temp_holder").innerText = `${temp_pre_format_farsi}C`;
 	temp_gauge.set(convert_kelvin_to_celes(temp));  
 
 	let humidity = data["humidity"];
-	document.getElementById("humidity_holder").innerText = `${humidity} g/m**-3`;
+	let humidity_farsi = farsi_ize_number(humidity);
+	document.getElementById("humidity_holder").innerText = `${humidity_farsi} g/m**-3`;
 	humidity_gauge.set(humidity);
 	
 	
