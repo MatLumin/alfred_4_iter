@@ -12,11 +12,25 @@
 	}
 
 
+@font-face
+	{
+	font-family: "vazir";
+	src: url("/static/vazir.ttf");
+	}
+
+
 *
 	{
 	font-family: font_0;
 	color: white;
 
+	}
+
+
+
+.vazir_font
+	{
+	font-family: vazir;
 	}
 
 

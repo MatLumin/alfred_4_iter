@@ -24,7 +24,7 @@ from_singular_seg(
 	
 
 
-		<h1 id="unix_title" onclick="pbv()"> UNIX: </h1>
+	<h1 id="unix_title" onclick="pbv()"> UNIX: </h1>
 	<div id="hour_minute_flex">
 		<h1 id="hour_dispaly">18</h1>
 		<pre id="hour_minute_delimiter"> </pre>
