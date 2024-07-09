@@ -105,7 +105,7 @@ from_singular_seg(
 	
 				
 
-	<h2 class="weather_label">سرعتا:</h2>
+	<h2 class="weather_label">سرعت:</h2>
 		<h2 class="weather_value" id="wind_speed_holder">5.14 km/h</h2>
 
 	<h2 class="weather_label" hidden="">جهت:</h2>
