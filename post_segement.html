@@ -252,7 +252,7 @@ air_speed_angle_gauge.animationSpeed = 100; // set animation speed (32 is defaul
 
 
 <script>
-const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LONG}&appid=1340efe030f838cd04d062ed85d74913`;
+const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/weather?lang=fa&lat=${LAT}&lon=${LONG}&appid=1340efe030f838cd04d062ed85d74913`;
 const WEATHER_API_UPDATING_DELAY_IN_MS = 1000 * 3600 * 2; //2 HOUR
 const MAX_WIND_SPEED = 15;
 const HIGHEST_WIND_ICON_ANIAMTION_DURATION = 1;
@@ -397,7 +397,7 @@ form_gauge_for_air_pollutor("canvas_of_pm10", "pm110");
 
 <script>
 //updating air pollution things 
-const AIR_POLLUTION_API_URL = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${LAT}&lon=${LONG}&appid=1340efe030f838cd04d062ed85d74913`;
+const AIR_POLLUTION_API_URL = `http://api.openweathermap.org/data/2.5/air_pollution?lang=fa&lat=${LAT}&lon=${LONG}&appid=1340efe030f838cd04d062ed85d74913`;
 const AIR_POLLUTION_API_UPDATING_DELAY_IN_MS = 1000 * 60 * 60 * 5; //5 HOUR
 
 async function return_needed_data_from_air_pollution_api()
