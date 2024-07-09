@@ -105,7 +105,7 @@ from_singular_seg(
 	
 				
 
-	<h2 class="weather_label">سرعا:</h2>
+	<h2 class="weather_label">سرعتا:</h2>
 		<h2 class="weather_value" id="wind_speed_holder">5.14 km/h</h2>
 
 	<h2 class="weather_label" hidden="">جهت:</h2>
@@ -360,7 +360,7 @@ from_singular_seg(
 	`
 	);
 
-from_singular_seg(
+(
 	"10",
 	454,90,269,343,
 	`
