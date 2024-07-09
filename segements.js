@@ -68,7 +68,7 @@ from_singular_seg(
 			
 	
 	
-	<h1 class="weather_label" onclick="refresh_the_page()">Weather</h1>
+	<h1 class="weather_label" onclick="refresh_the_page()">آب و هوا</h1>
 	<img id="weather_status_icon" src="/static/weather_icons/01d.png"> 
 	<h1 id="weather_title_holder"></h1> 
 	<h1 id="weather_caption_holder">clear sky</h1> 
@@ -105,15 +105,15 @@ from_singular_seg(
 	
 				
 
-	<h2 class="weather_label">Speed:</h2>
+	<h2 class="weather_label">سرعا:</h2>
 		<h2 class="weather_value" id="wind_speed_holder">5.14 km/h</h2>
 
-	<h2 class="weather_label" hidden="">angle:</h2>
+	<h2 class="weather_label" hidden="">جهت:</h2>
 		<h2 class="weather_value" id="wind_angle_holder" hidden="">310 deg</h2>
 		
 		
 	<canvas id="air_speed_angle_canvas" height="47" width="61"></canvas>
-	<h2 class="weather_label" hidden="">gust:</h2>
+	<h2 class="weather_label" hidden="">وزش:</h2>
 		<h2 class="weather_value" id="wind_gust_holder" hidden="">undefined</h2>		
 	
 	<img class="wind_logo" src="static/wind_logo.png" style="animation-duration: 2.91829s; animation-delay: 2.55825s;">
@@ -175,7 +175,7 @@ from_singular_seg(
 	
 		
 	<h3>
-	scan to download AR APP
+	برای دانلود اپ اسکن کنید
 	</h3>
 	<img id="qr_code_holder" src="static/app_download_qr_code.png">
 	
@@ -410,12 +410,12 @@ from_singular_seg(
 	
 	
 	
-	<h1 class="weather_label">Temp:</h1>
+	<h1 class="weather_label">دما:</h1>
 	<canvas id="temp_canvas" height="47" width="61"></canvas>
 	<h2 class="weather_value" id="temp_holder">31C</h2>
 
 
-	<h1 class="weather_label">humidity:</h1>
+	<h1 class="weather_label">رطوبت:</h1>
 	<canvas id="humidity_canvas" height="47" width="61"></canvas>	
 	<h2 class="weather_value" id="humidity_holder">8 g/m**-3</h2>
 	
@@ -500,7 +500,7 @@ from_singular_seg(
 
 
 
-	<h1 class="air_polltion_title">AIR POLLUTOIN</h1>
+	<h1 class="air_polltion_title">آلودگی هوا</h1>
 	
 	<h1 class="air_polltion_polluter_title">NO2</h1>
 	<span class="air_pollution_value" id="value_holder_of_no2">
@@ -539,7 +539,7 @@ from_singular_seg(
 	
 	
 	
-	<h1 class="air_polltion_title">AIR POLLUTOIN</h1>
+	<h1 class="air_polltion_title">آلودگی هوا</h1>
 	
 
 	<h1 class="air_polltion_polluter_title">SO2</h1>
