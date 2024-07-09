@@ -8,6 +8,14 @@ const LONG = 51.4088;
 
 
 <script>
+function farsi_ize_number(n)
+	{
+	return Intl.NumberFormat("fa").format(n);
+	}
+</script>
+
+
+<script>
 //general scripts here 
 
 function random_choice_from_iterable(iterable)
@@ -539,7 +547,8 @@ function updatae_net_speed_text_display()
 	let speed = (base_net_speed)+Math.random()*0.25;
 	speed = speed.toFixed(2);
 	gauge.set(speed);
-	document.getElementById("net_speed_value").innerText = `${speed}MB`
+	let speed_farsi = farsi_ize_number(speed);
+	document.getElementById("net_speed_value").innerText = `${speed_farsi}MB`
 	}
 
 

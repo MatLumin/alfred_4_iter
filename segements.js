@@ -289,7 +289,7 @@ from_singular_seg(
 	
 
 
-	<h1 id="net_speed_title">Net speed:</h1>	
+	<h1 id="net_speed_title">سرعت نت</h1>	
 	<canvas id="net_speed_gauge" width="100" height="50"></canvas>
 	<h1 id="net_speed_value">3.05MB</h1>
 	meow
