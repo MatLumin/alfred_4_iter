@@ -50,7 +50,7 @@ def get_font_0():
 @app.route("/set_segements_data", methods=["POST"])
 def set_segments_data():
 	new_content = request.json["data"];
-	write_file("segements.js", new_content);
+	#write_file("segements.js", new_content);
 	return "200";
 
 """
